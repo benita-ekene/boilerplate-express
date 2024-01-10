@@ -6,6 +6,7 @@
 const bGround = require('fcc-express-bground');
 const myApp = require('./myApp');
 const express = require('express');
+// const MESSAGE_STYLE = require('./.env')
 const app = express();
 
 if (!process.env.DISABLE_XORIGIN) {
@@ -33,7 +34,9 @@ app.use('/public',  (req, res) => {
 })
 
 app.get('/json', (req, res) => {
+  process.env.MESSAGE_STYLE
   res.json({"message": "Hello json"})
+  
 })
 
 const port = process.env.PORT || 3000;
