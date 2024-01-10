@@ -22,16 +22,18 @@ if (!process.env.DISABLE_XORIGIN) {
 }
 
 
+app.get("/", (req, res) => {
+  // res.send('Hello Express')
+  res.sendFile(__dirname +'/views/index.html')
+})
+
 express.static(__dirname +'/public')
 app.use('/public',  (req, res) => {
   res.sendFile(__dirname +'/public/style.css')
 })
 
-// app.use('/public', express.static(path.join(__dirname, 'public')));
-
-app.get("/", (req, res) => {
-  // res.send('Hello Express')
-  res.sendFile(__dirname +'/views/index.html')
+app.get('/json', (req, res) => {
+  res.json({"message": "Hello json"})
 })
 
 const port = process.env.PORT || 3000;
