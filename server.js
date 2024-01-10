@@ -33,24 +33,14 @@ app.use('/public',  (req, res) => {
   res.sendFile(__dirname +'/public/style.css')
 })
 
-// app.get('/json', (req, res) => {
-//   let message = 'Hello json';
-
-//   // Check the value of the MESSAGE_STYLE environment variable
-//   if (process.env.MESSAGE_STYLE === 'uppercase') {
-//     message = message.toUpperCase();
-//   }
-
-//   // Sending the JSON response
-//   res.json({ message });
-// });
-
 app.get('/json', (req, res) => {
   let message = 'Hello json';
 
   // Check the value of the MESSAGE_STYLE environment variable
-  if (process.env.MESSAGE_STYLE && process.env.MESSAGE_STYLE.toLowerCase() === 'uppercase') {
+  if (process.env.MESSAGE_STYLE === 'uppercase') {
     message = message.toUpperCase();
+  } else {
+    message = "Hello World";
   }
 
   // Sending the JSON response
