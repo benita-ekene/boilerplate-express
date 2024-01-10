@@ -36,13 +36,15 @@ app.use('/public',  (req, res) => {
 app.get('/json', (req, res) => {
   let message = 'Hello json';
 
-  // Check if MESSAGE_STYLE is set to 'uppercase'
+  // Check the value of the MESSAGE_STYLE environment variable
   if (process.env.MESSAGE_STYLE === 'uppercase') {
     message = message.toUpperCase();
   }
 
+  // Sending the JSON response
   res.json({ message });
 });
+
 
 
 const port = process.env.PORT || 3000;
