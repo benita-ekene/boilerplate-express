@@ -22,7 +22,7 @@ if (!process.env.DISABLE_XORIGIN) {
 }
 
 express.static('__dirname + /public')
-app.use('__dirname + /public', (req, res) => {
+app.use('/', (req, res) => {
 res.send('/public/style.css')
 })
 
