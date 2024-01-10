@@ -22,10 +22,12 @@ if (!process.env.DISABLE_XORIGIN) {
 }
 
 
-express.static('/public')
-app.use('/',  (req, res) => {
+express.static(__dirname +'/public')
+app.use('/public',  (req, res) => {
   res.sendFile(__dirname +'/public/style.css')
 })
+
+// app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.get("/", (req, res) => {
   // res.send('Hello Express')
