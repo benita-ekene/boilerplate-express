@@ -22,16 +22,17 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
-// app.use( (req, res, next) => {
-  
-//   next()
-// })
+app.use( (req, res, next) => {
+  let logger = req.method + " " + req.path + " - " + req.ip;
+  console.log(logger)
+  next()
+})
 
-// app.get("/json", (req, res) => {
-//   let message = req.method + " " + req.path + " - " + req.ip;
-//   res.json(message)
-//   console.log(message)
-// })
+app.get("/json", (req, res) => {
+  // let message = req.method + " " + req.path + " - " + req.ip;
+  res.json('Hello, World!')
+  // console.log(message)
+})
 
 // app.post("/json", (req, res) => {
 //   let message = req.method + " " + req.path + " - " + req.ip;
