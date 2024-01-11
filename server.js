@@ -22,17 +22,19 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
-app.get('/now', (req, res, next) => {
-  req.time = new Date().toString()
-  next()
-}, (req, res) => {
-  res.json({time: req.time})
-}) 
+ 
 
 app.use( (req, res, next) => {
   let logger = req.method + " " + req.path + " " + " - " + " " + req.ip;
   console.log(logger)
   next()
+})
+
+app.get('/now', (req, res, next) => {
+  req.time = new Date().toString()
+  next()
+}, (req, res) => {
+  res.json({time: req.time})
 })
 
 app.get("/json", (req, res) => {
