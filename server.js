@@ -22,28 +22,16 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
+app.use( (req, res, next) => {
 
+  next()
+})
 
-// app.get ("/json", (req, res) => {
-//   if ( process.env.MESSAGE_STYLE === "uppercase"){
-//       res.json({"mesage": "HELLO JSON"});
-//   } else {
-//        res.json({"message": "Hello json"});
-//   }
-// })
-
-// app.get('/json', (req, res) => {
-//   let message = 'Hello json';
-
-//   // Check the value of the MESSAGE_STYLE environment variable
-//   if (process.env.MESSAGE_STYLE && process.env.MESSAGE_STYLE.toLowerCase() === 'uppercase') {
-//     message = message.toUpperCase();
-//   }
-
-//   // Sending the JSON response
-//   res.json({ message });
-// });
-
+app.get("/json", (req, res) => {
+  let message = req.method + " " + req.path + " - " + req.ip;
+  res.json(message)
+  console.log(message)
+})
 
 app.get("/", (req, res) => {
   // res.send('Hello Express')
