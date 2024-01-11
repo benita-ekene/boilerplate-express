@@ -22,26 +22,44 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
-app.use( (req, res, next) => {
+// app.use( (req, res, next) => {
+  
+//   next()
+// })
 
-  next()
-})
+// app.get("/json", (req, res) => {
+//   let message = req.method + " " + req.path + " - " + req.ip;
+//   res.json(message)
+//   console.log(message)
+// })
 
-app.get("/json", (req, res) => {
-  let message = req.method + " " + req.path + " - " + req.ip;
-  res.json(message)
-  console.log(message)
-})
+// app.post("/json", (req, res) => {
+//   let message = req.method + " " + req.path + " - " + req.ip;
+//   res.json(message)
+//   console.log(message)
+// })
 
-app.get("/", (req, res) => {
-  // res.send('Hello Express')
-  res.sendFile(__dirname +'/views/index.html')
-})
+// app.put("/json", (req, res) => {
+//   let message = req.method + " " + req.path + " - " + req.ip;
+//   res.json(message)
+//   console.log(message)
+// })
 
-express.static(__dirname +'/public')
-app.use('/public',  (req, res) => {
-  res.sendFile(__dirname +'/public/style.css')
-})
+// app.delete("/json", (req, res) => {
+//   let message = req.method + " " + req.path + " - " + req.ip;
+//   res.json(message)
+//   console.log(message)
+// })
+
+// app.get("/", (req, res) => {
+//   // res.send('Hello Express')
+//   res.sendFile(__dirname +'/views/index.html')
+// })
+
+// express.static(__dirname +'/public')
+// app.use('/public',  (req, res) => {
+//   res.sendFile(__dirname +'/public/style.css')
+// })
 
 app.get('/json', (req, res) => {
     const message = process.env.MESSAGE_STYLE === 'uppercase' ? 'HELLO JSON' : 'Hello json';
