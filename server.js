@@ -22,7 +22,12 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
- 
+app.get('/now', (req, res, next) => {
+  req.time = new Date().toString();
+  next();
+}, (req, res) => {
+  res.send({time: req.time});
+}) 
 
 app.use( (req, res, next) => {
   let logger = req.method + " " + req.path + " " + " - " + " " + req.ip;
@@ -30,12 +35,6 @@ app.use( (req, res, next) => {
   next()
 })
 
-app.get('/now', (req, res, next) => {
-  req.time = new Date().toString()
-  next()
-}, (req, res) => {
-  res.json({time: req.time})
-})
 
 app.get("/json", (req, res) => {
   // let message = req.method + " " + req.path + " - " + req.ip;
