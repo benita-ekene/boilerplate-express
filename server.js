@@ -26,7 +26,7 @@ if (!process.env.DISABLE_XORIGIN) {
 app.get('/name', (req, res) => {
   const firstname = req.query.firstname;
   const lastname = req.query.lastname;
-  const name = `Her first firstname is: ${firstname}, and lastname is: ${lastname}`
+  const name = `${firstname} ${lastname}`
   res.json({
     name: name
   });
