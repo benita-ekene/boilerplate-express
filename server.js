@@ -22,18 +22,7 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
-app.get(
-  "/now",
-  (req, res, next) => {
-    req.time = new Date().toString();
-    next();
-  },
-  (req, res) => {
-    res.send({
-      time: req.time
-    });
-  }
-);
+
 
 // app.get('/now', (req, res, next) => {
 //   req.time = new Date().toString();
