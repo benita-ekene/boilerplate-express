@@ -23,25 +23,6 @@ if (!process.env.DISABLE_XORIGIN) {
 }
 
 
-
-// app.get('/now', (req, res, next) => {
-//   req.time = new Date().toString();
-//   next();
-// }, (req, res) => {
-
-//   res.send({time: req.time});
-// }) 
-
-
-// app.get('/now', (req, res, next) => {
-//   req.time = new Date().toString();
-//   next();
-// }, (req, res) => {
-//   res.setHeader('Content-Type', 'application/json'); // Set the Content-Type header
-//   res.send({ time: req.time });
-// });
-
-
 app.use( (req, res, next) => {
   let logger = req.method + " " + req.path + " " + " - " + " " + req.ip;
   console.log(logger)
