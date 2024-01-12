@@ -25,6 +25,7 @@ app.route('/name')
     const lastname = req.body.lastname;
     const name = { name: firstname + ' ' + lastname };
     res.json(name);
+    console.log(name)
   });
 
 
