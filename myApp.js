@@ -3,15 +3,22 @@ let app = express();
 
 
 
-app.get('/name', (req, res) => {
-  const firstname = req.query.firstname;
-  const lastname = req.query.lastname;
-  const name = `${firstname} ${lastname}`
-  res.json({
-    name: name
-  });
-});
+// app.get('/name', (req, res) => {
+//   const firstname = req.query.firstname;
+//   const lastname = req.query.lastname;
+//   const name = `${firstname} ${lastname}`
+//   res.json({
+//     name: name
+//   });
+// });
 
+
+app.route('/name').get((req, res) => {
+  var first = req.query.first;
+  var last = req.query.last;
+  var jsonObj = {name: first + ' ' + last};
+  res.send(jsonObj);
+}).post();
 
 console.log("Hello World")
 
