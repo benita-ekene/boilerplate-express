@@ -9,6 +9,13 @@ const express = require('express');
 
 const app = express();
 
+app.get('/now', (req, res, next) => {
+  req.time = new Date().toString();
+  next();
+}, (req, res) => {
+  res.send({time: req.time});
+}) 
+
 if (!process.env.DISABLE_XORIGIN) {
   app.use((req, res, next) => {
     const allowedOrigins = ['https://narrow-plane.gomix.me', 'https://www.freecodecamp.com'];
@@ -22,21 +29,15 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
+
+
 // app.get('/now', (req, res, next) => {
 //   req.time = new Date().toString();
 //   next();
 // }, (req, res) => {
-//   res.send({time: req.time});
-// }) 
-
-
-app.get('/now', (req, res, next) => {
-  req.time = new Date().toString();
-  next();
-}, (req, res) => {
-  res.setHeader('Content-Type', 'application/json'); // Set the Content-Type header
-  res.send({ time: req.time });
-});
+//   res.setHeader('Content-Type', 'application/json'); // Set the Content-Type header
+//   res.send({ time: req.time });
+// });
 
 
 app.use( (req, res, next) => {
