@@ -1,22 +1,22 @@
 let express = require('express');
 let app = express();
+let bodyParser = require('body-parser')
+
+app.use(bodyParser.urlencoded({extended: false}))
 
 
-
-// app.get('/name', (req, res) => {
-//   const firstname = req.query.firstname;
-//   const lastname = req.query.lastname;
-//   const name = `${firstname} ${lastname}`
-//   res.json({
-//     name: name
-//   });
-// });
+// app.route('/name').get((req, res) => {
+//   var first = req.query.first;
+//   var last = req.query.last;
+//   var jsonObj = {name: first + ' ' + last};
+//   res.send(jsonObj);
+// }).post();
 
 
 app.route('/name').get((req, res) => {
-  var first = req.query.first;
-  var last = req.query.last;
-  var jsonObj = {name: first + ' ' + last};
+  const first = req.query.first;
+  const last = req.query.last;
+  const jsonObj = {name: first + ' ' + last};
   res.send(jsonObj);
 }).post();
 
