@@ -23,14 +23,14 @@ if (!process.env.DISABLE_XORIGIN) {
 }
 
 
-app.get('/name', (req, res) => {
-  const firstname = req.query.firstname;
-  const lastname = req.query.lastname;
-  const name = `${firstname} ${lastname}`
-  res.json({
-    name: name
-  });
-});
+// app.get('/name', (req, res) => {
+//   const firstname = req.query.firstname;
+//   const lastname = req.query.lastname;
+//   const name = `${firstname} ${lastname}`
+//   res.json({
+//     name: name
+//   });
+// });
 
 app.use( (req, res, next) => {
   let logger = req.method + " " + req.path + " " + " - " + " " + req.ip;
