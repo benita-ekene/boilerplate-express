@@ -2,6 +2,17 @@ let express = require('express');
 let app = express();
 
 
+
+app.get('/name', (req, res) => {
+  const firstname = req.query.firstname;
+  const lastname = req.query.lastname;
+  const name = `${firstname} ${lastname}`
+  res.json({
+    name: name
+  });
+});
+
+
 console.log("Hello World")
 
 app.get(
@@ -31,17 +42,9 @@ app.get("/:word/echo", (req, res) => {
 //   res.send(` ${firstname} ${lastname}`);
 // });
 
-// Use middleware to parse query parameters
-app.use(express.urlencoded({ extended: true }));
+// // Use middleware to parse query parameters
+// app.use(express.urlencoded({ extended: true }));
 
-app.get('/name', (req, res) => {
-  const firstname = req.query.firstname;
-  const lastname = req.query.lastname;
-  const name = `${firstname} ${lastname}`
-  res.json({
-    name: name
-  });
-});
 
 
 
