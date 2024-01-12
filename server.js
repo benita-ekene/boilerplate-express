@@ -23,18 +23,19 @@ if (!process.env.DISABLE_XORIGIN) {
 }
 
 
-app.get(
-  "/now",
-  (req, res, next) => {
-    // adding the current time to req object
-    req.time = new Date().toString();
-    next();
-  },
-  (req, res) => {
-    // responding with a JSON object containing the time
-    res.json({ time: req.time });
-  }
-);
+// Mounted middleware for /now endpoint
+const addTimeMiddleware = (req, res, next) => {
+  // adding the current time to req object
+  req.time = new Date().toString();
+  next();
+};
+
+// Route definition with mounted middleware and final handler
+app.get("/now", addTimeMiddleware, (req, res) => {
+  // responding with a JSON object containing the time
+  res.json({ time: req.time });
+});
+
 
 
 // app.get('/now', (req, res, next) => {
