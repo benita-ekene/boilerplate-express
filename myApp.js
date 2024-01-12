@@ -26,13 +26,41 @@ app.get("/:word/echo", (req, res) => {
   });
 });
 
-app.get("/name", (req, res) => {
- const firstname = req.query.firstname
- const lastname = req.query.lastname
-  res.json({
-     name: firstname, lastname
-  });
-});
+// app.get('/name', (req, res) => {
+//   const { firstname, lastname } = req.query;
+//   res.send(` ${firstname} ${lastname}`);
+// });
+
+// Use middleware to parse query parameters
+app.use(express.urlencoded({ extended: true }));
+
+// Define a route with query parameters
+// app.get('/name', (req, res) => {
+//   const firstname = req.query.name;
+//   const lastname = req.query.age;
+//   const name = `Her first firstname is: ${firstname}, and lastname is: ${lastname}`
+//   res.json({
+//     name: name
+//   });
+// });
+
+app.route('/name')
+  .get((req, res) => {
+    const firstname = req.query.firstname;
+    const lastname = req.query.lastname;
+    const name = `Her first name is: ${firstname}, and last name is: ${lastname}`;
+    res.json({
+      name: name
+    });
+  })
+  // .post((req, res) => {
+  //   const name = {
+  //     firstname: "John",
+  //     lastname: "Joy"
+  //   };
+  //   res.json(name);
+  // });
+
 
 
 
