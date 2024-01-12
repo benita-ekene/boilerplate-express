@@ -23,6 +23,15 @@ if (!process.env.DISABLE_XORIGIN) {
 }
 
 
+app.get('/name', (req, res) => {
+  const firstname = req.query.firstname;
+  const lastname = req.query.lastname;
+  const name = `Her first firstname is: ${firstname}, and lastname is: ${lastname}`
+  res.json({
+    name: name
+  });
+});
+
 app.use( (req, res, next) => {
   let logger = req.method + " " + req.path + " " + " - " + " " + req.ip;
   console.log(logger)
