@@ -9,13 +9,6 @@ const express = require('express');
 
 const app = express();
 
-app.get('/now', (req, res, next) => {
-  req.time = new Date().toString();
-  next();
-}, (req, res) => {
-  res.send({time: req.time});
-}) 
-
 if (!process.env.DISABLE_XORIGIN) {
   app.use((req, res, next) => {
     const allowedOrigins = ['https://narrow-plane.gomix.me', 'https://www.freecodecamp.com'];
@@ -29,6 +22,28 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
+
+app.get(
+  "/now",
+  (req, res, next) => {
+    // adding the current time to req object
+    req.time = new Date().toString();
+    next();
+  },
+  (req, res) => {
+    // responding with a JSON object containing the time
+    res.json({ time: req.time });
+  }
+);
+
+
+// app.get('/now', (req, res, next) => {
+//   req.time = new Date().toString();
+//   next();
+// }, (req, res) => {
+
+//   res.send({time: req.time});
+// }) 
 
 
 // app.get('/now', (req, res, next) => {
