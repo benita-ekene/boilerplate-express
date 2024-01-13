@@ -2,15 +2,8 @@ let express = require('express');
 let app = express();
 let bodyParser = require('body-parser')
 
-// app.use(bodyParser.urlencoded({extended: false}))
+// app.use(bodyParser.urlencoded({extended: true}))
 
-
-// app.route('/name').get((req, res) => {
-//   var first = req.query.first;
-//   var last = req.query.last;
-//   var jsonObj = {name: first + ' ' + last};
-//   res.send(jsonObj);
-// }).post();
 app.use(bodyParser.json());
 
 app.route('/name')
@@ -27,6 +20,15 @@ app.route('/name')
     res.json(name);
     console.log(name)
   });
+
+
+  // app.route('/name').get((req, res) => {
+//   var first = req.query.first;
+//   var last = req.query.last;
+//   var jsonObj = {name: first + ' ' + last};
+//   res.send(jsonObj);
+// }).post();
+
 
 
 console.log("Hello World")
