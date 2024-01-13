@@ -2,9 +2,9 @@ let express = require('express');
 let app = express();
 let bodyParser = require('body-parser')
 
-// app.use(bodyParser.urlencoded({extended: true}))
-
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(express.json());
+// app.use(bodyParser.json());
 
 app.route('/name')
   .get((req, res) => {
@@ -14,11 +14,11 @@ app.route('/name')
     res.json(jsonObj);
   })
   .post((req, res) => {
-    const firstname = req.body.firstname;
-    const lastname = req.body.lastname;
-    const name = { name: firstname + ' ' + lastname };
-    res.json(name);
-    console.log(name)
+   const first = req.body.first;
+    const last = req.body.last;
+    const jsonObj = { name: first + ' ' + last };
+    res.json(jsonObj);
+    console.log(jsonObj)
   });
 
 
